@@ -308,7 +308,7 @@ body::before {
     left: calc(50% + 210px);
     top: 50%;
     transform: translateY(-50%) translateX(50px) scale(0.95);
-    z-index: 10;
+    z-index: 1000;
 }
 
 .member-panel.visible {
@@ -757,6 +757,8 @@ body::before {
         -webkit-backdrop-filter: none;
         border: 1px solid rgba(0, 0, 0, 0.1);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 2;
     }
 
     .profile-card:hover {
@@ -780,10 +782,18 @@ body::before {
         -webkit-backdrop-filter: none;
         border: none;
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
     }
 
     .member-panel.visible {
         transform: translateX(0) translateY(0) scale(1);
+    }
+    
+    /* Hide profile card when member panel is open on mobile */
+    .container-wrapper.shifted .profile-card {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
     }
 
     .profile-image-container {
@@ -990,6 +1000,8 @@ body::before {
         -webkit-backdrop-filter: none;
         border: 1px solid rgba(0, 0, 0, 0.1);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 2;
     }
 
     .profile-card:hover {
@@ -1070,6 +1082,7 @@ body::before {
         -webkit-backdrop-filter: none;
         border: 1px solid rgba(0, 0, 0, 0.1);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
     }
 
     .panel-header {
