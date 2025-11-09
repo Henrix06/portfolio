@@ -17,31 +17,44 @@
                  :style="cardStyle">
                 <div class="shine" :style="shineStyle"></div>
                 <div class="profile-card-inner">
-                    <div class="profile-header">
-                        <h2 class="profile-name">{{ profileName }}</h2>
-                        <div class="status-container">
-                            <div class="spinner"></div>
-                            <span>{{ status }}</span>
-                        </div>
-                    </div>
+                    
 
                     <div class="profile-image-container">
                         <img src="images/henrix.png" 
                              alt="Profile" 
                              class="profile-image">
                     </div>
+                    <div class="profile-header">
+                        <h2 class="profile-name">{{ profileName }}</h2>
+                        <div class="status-container">
+                            
+                        </div>
+                    </div>
 
                     <div class="profile-footer">
-                        <div class="user-info">
-                            <div class="user-avatar">{{ userInitials }}</div>
-                            <div class="user-details">
-                                <span class="username">{{ username }}</span>
-                                <span class="timestamp">{{ timestamp }}</span>
-                            </div>
+                       
+                        
+                        <div class="social-icons">
+                            <a :href="socialLinks.github" target="_blank" class="social-icon" title="GitHub">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 0C5.37 0 0 5.37 0 12C0 17.31 3.435 21.795 8.205 23.385C8.805 23.49 9.03 23.13 9.03 22.815C9.03 22.53 9.015 21.585 9.015 20.58C6 21.135 5.22 19.845 4.98 19.17C4.845 18.825 4.26 17.76 3.75 17.475C3.33 17.25 2.73 16.695 3.735 16.68C4.68 16.665 5.385 17.55 5.61 17.91C6.6 19.725 8.385 19.215 9.075 18.9C9.18 18.12 9.495 17.595 9.84 17.295C7.17 16.995 4.38 15.96 4.38 11.37C4.38 10.065 4.845 8.985 5.625 8.145C5.49 7.845 5.07 6.615 5.73 4.965C5.73 4.965 6.735 4.635 9.03 6.165C9.99 5.91 11.01 5.7825 12.03 5.7825C13.05 5.7825 14.07 5.91 15.03 6.165C17.31 4.62 18.315 4.965 18.315 4.965C18.975 6.615 18.555 7.845 18.42 8.145C19.2 8.985 19.665 10.05 19.665 11.37C19.665 15.975 16.86 16.995 14.175 17.295C14.64 17.67 15.045 18.39 15.045 19.515C15.045 21.12 15.03 22.41 15.03 22.815C15.03 23.13 15.255 23.505 15.87 23.385C20.565 21.795 24 17.295 24 12C24 5.37 18.63 0 12 0Z" fill="currentColor"/>
+                                </svg>
+                            </a>
+                            <a :href="socialLinks.linkedin" target="_blank" class="social-icon" title="LinkedIn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20.447 20.452H16.893V14.883C16.893 13.555 16.866 11.846 15.041 11.846C13.188 11.846 12.905 13.291 12.905 14.785V20.452H9.351V9H12.765V10.561H12.811C13.212 9.661 14.252 8.711 15.794 8.711C18.98 8.711 20.447 10.933 20.447 14.169V20.452ZM5.337 7.433C4.193 7.433 3.274 6.507 3.274 5.367C3.274 4.223 4.193 3.304 5.337 3.304C6.477 3.304 7.396 4.223 7.396 5.367C7.396 6.507 6.477 7.433 5.337 7.433ZM7.119 20.452H3.555V9H7.119V20.452ZM22.225 0H1.771C0.792 0 0 0.774 0 1.729V22.271C0 23.226 0.792 24 1.771 24H22.225C23.2 24 24 23.226 24 22.271V1.729C24 0.774 23.2 0 22.225 0Z" fill="currentColor"/>
+                                </svg>
+                            </a>
+                            <a :href="socialLinks.website" target="_blank" class="social-icon" title="Website">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M2 12H22M12 2C14.5 6 16 9 16 12C16 15 14.5 18 12 22C9.5 18 8 15 8 12C8 9 9.5 6 12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                            </a>
                         </div>
+
                         <button class="add-member-btn" @click="viewMember">
-                            <span>👁</span>
-                            <span>View member</span>
+                            View Profile
                         </button>
                     </div>
                 </div>
@@ -49,62 +62,135 @@
 
             <div class="member-panel" :class="{ visible: showPanel }">
                 <div class="panel-header">
-                    <h3 class="panel-title">Member Details</h3>
                     <button class="close-btn" @click="closePanel">×</button>
                 </div>
 
-                <div class="member-details">
-                    <div class="detail-section">
-                        <div class="detail-label">Full Name</div>
-                        <div class="detail-value">{{ memberDetails.name }}</div>
-                    </div>
+                <div class="profile-header-section">
+                    <h1 class="profile-main-name">{{ memberDetails.name }}</h1>
+                    <p class="profile-subtitle">{{ memberDetails.role }}</p>
+                </div>
 
-                    <div class="detail-section">
-                        <div class="detail-label">Username</div>
-                        <div class="detail-value">{{ memberDetails.username }}</div>
-                    </div>
+                <div class="profile-content">
+                    <div class="profile-left-column">
+                        <div class="profile-section">
+                            <h3 class="section-title">CONTACT</h3>
+                            <div class="about-items">
+                                <div class="about-item">
+                                    <div class="icon-circle">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M11 1H5C4.44772 1 4 1.44772 4 2V14C4 14.5523 4.44772 15 5 15H11C11.5523 15 12 14.5523 12 14V2C12 1.44772 11.5523 1 11 1Z" stroke="currentColor" stroke-width="1.5"/>
+                                            <path d="M6 3H10M6 13H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                        </svg>
+                                    </div>
+                                    <span>{{ memberDetails.mobile }}</span>
+                                </div>
+                                <div class="about-item">
+                                    <div class="icon-circle">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="2" y="4" width="12" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                            <path d="M2 5L8 9L14 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                        </svg>
+                                    </div>
+                                    <span>{{ memberDetails.email }}</span>
+                                </div>
+                                <div class="about-item">
+                                    <div class="icon-circle">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="2" y="3" width="12" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                            <path d="M5 7H11M5 10H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                        </svg>
+                                    </div>
+                                    <span>{{ memberDetails.linkedin }}</span>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="detail-section">
-                        <div class="detail-label">Email</div>
-                        <div class="detail-value">{{ memberDetails.email }}</div>
-                    </div>
+                        <div class="profile-section">
+                            <h3 class="section-title">TOP SKILLS</h3>
+                            <p class="section-text">{{ memberDetails.topSkills }}</p>
+                        </div>
 
-                    <div class="detail-section">
-                        <div class="detail-label">Role</div>
-                        <div class="detail-value">{{ memberDetails.role }}</div>
-                    </div>
+                        <div class="profile-section">
+                            <h3 class="section-title">CERTIFICATIONS</h3>
+                            <div class="influencer-list">
+                                <div class="influencer-item" v-for="(item, index) in memberDetails.certifications" :key="index">
+                                    <span class="influencer-label">{{ item.name }}</span>
+                                    <div class="influencer-bar">
+                                        <div class="influencer-bar-fill" :style="{ width: '100%' }"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="detail-section">
-                        <div class="detail-label">Status</div>
-                        <div class="detail-value status-badge">
-                            <span class="status-dot"></span>
-                            {{ memberDetails.status }}
+                        <div class="profile-section">
+                            <h3 class="section-title">CORE COMPETENCIES</h3>
+                            <p class="section-text">{{ memberDetails.coreCompetencies }}</p>
+                        </div>
+
+                        <div class="profile-section">
+                            <h3 class="section-title">EDUCATION</h3>
+                            <p class="section-text">{{ memberDetails.education }}</p>
+                        </div>
+
+                        <div class="profile-section">
+                            <div class="action-buttons-container">
+                                <button class="portfolio-btn" @click="goToPortfolio">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 3C2 2.44772 2.44772 2 3 2H13C13.5523 2 14 2.44772 14 3V13C14 13.5523 13.5523 14 13 14H3C2.44772 14 2 13.5523 2 13V3Z" stroke="currentColor" stroke-width="1.5"/>
+                                        <path d="M5 6L8 9L11 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    Portfolio
+                                </button>
+                                <button class="github-btn" @click="viewGitHub">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z" fill="currentColor"/>
+                                    </svg>
+                                    GitHub
+                                </button>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="detail-section">
-                        <div class="detail-label">Bio</div>
-                        <div class="detail-value">{{ memberDetails.bio }}</div>
+                    <div class="profile-right-column">
+                        <div class="profile-section">
+                            <h3 class="section-title">WORK EXPERIENCE</h3>
+                            <div class="experience-list">
+                                <div class="experience-item" v-for="(job, index) in visibleWorkExperience" :key="index">
+                                    <div class="experience-header">
+                                        <div class="experience-title">{{ job.title }}</div>
+                                        <div class="experience-company">{{ job.company }}</div>
+                                        <div class="experience-meta">
+                                            <span class="experience-duration">{{ job.duration }}</span>
+                                            <span class="experience-location">{{ job.location }}</span>
+                                        </div>
+                                    </div>
+                                    <ul class="experience-responsibilities">
+                                        <li v-for="(responsibility, idx) in job.responsibilities" :key="idx">{{ responsibility }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <button v-if="hasMoreExperience" class="read-more-btn" @click="toggleExperience">
+                                <span v-if="!showAllExperience">Read More</span>
+                                <span v-else>Show Less</span>
+                                <svg v-if="!showAllExperience" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <svg v-else width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 10L8 6L12 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
+                </div>
 
-                    <div class="detail-section">
-                        <div class="detail-label">Joined</div>
-                        <div class="detail-value">{{ memberDetails.joined }}</div>
+                <div class="profile-summary">
+                    <div class="summary-item">
+                        <div class="summary-value highlight">{{ memberDetails.yearsExperience }}+</div>
+                        <div class="summary-label">Years of Experience</div>
                     </div>
-
-                    <div class="action-buttons">
-                        <button class="action-btn primary" @click="sendMessage">
-                            <span>💬</span>
-                            Send Message
-                        </button>
-                        <button class="action-btn secondary" @click="viewProfile">
-                            <span>🔗</span>
-                            View Profile
-                        </button>
-                        <button class="action-btn secondary" @click="viewGitHub">
-                            <span>💻</span>
-                            GitHub Profile
-                        </button>
+                    <div class="summary-item">
+                        <div class="summary-value">{{ memberDetails.currentRole }}</div>
+                        <div class="summary-label">Current Position</div>
                     </div>
                 </div>
             </div>
