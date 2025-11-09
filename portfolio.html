@@ -289,6 +289,90 @@
                 font-size: 0.8rem;
             }
         }
+
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #1f1f1f 50%, #252525 75%, #1a1a1a 100%);
+            }
+
+            .portfolio-title {
+                background: linear-gradient(135deg, #e0e0e0 0%, #b0b0b0 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            .portfolio-subtitle {
+                color: #b0b0b0;
+            }
+
+            .back-button {
+                background: rgba(40, 40, 40, 0.6);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                color: #e0e0e0;
+            }
+
+            .back-button:hover {
+                background: rgba(50, 50, 50, 0.8);
+                color: #ffffff;
+            }
+
+            .portfolio-card {
+                background: rgba(30, 30, 30, 0.6);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            }
+
+            .portfolio-card:hover {
+                background: rgba(35, 35, 35, 0.7);
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            }
+
+            .portfolio-card-title {
+                color: #e0e0e0;
+            }
+
+            .portfolio-card-description {
+                color: #d0d0d0;
+            }
+
+            .tech-tag {
+                background: rgba(40, 40, 40, 0.6);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                color: #d0d0d0;
+            }
+
+            .portfolio-card-link {
+                color: #e0e0e0;
+            }
+
+            .portfolio-card-link:hover {
+                color: #ffffff;
+            }
+
+            .section-divider {
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            @media (max-width: 768px) {
+                .portfolio-card {
+                    background: #1a1a1a;
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                }
+
+                .back-button {
+                    background: #2d2d2d;
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                }
+            }
+
+            @media (max-width: 576px) {
+                .portfolio-card {
+                    background: #1a1a1a;
+                }
+            }
+        }
     </style>
 </head>
 <body>
