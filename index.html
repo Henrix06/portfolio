@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div id="app">
+        <div class="container-wrapper" :class="{ shifted: showPanel }">
+            <div class="profile-card" 
+                 ref="card"
+                 @mousemove="handleMouseMove"
+                 @mouseleave="handleMouseLeave"
+                 :style="cardStyle">
+                <div class="shine" :style="shineStyle"></div>
+                <div class="profile-card-inner">
+                    <div class="profile-header">
+                        <h2 class="profile-name">{{ profileName }}</h2>
+                        <div class="status-container">
+                            <div class="spinner"></div>
+                            <span>{{ status }}</span>
+                        </div>
+                    </div>
+
+                    <div class="profile-image-container">
+                        <img src="images/henrix.png" 
+                             alt="Profile" 
+                             class="profile-image">
+                    </div>
+
+                    <div class="profile-footer">
+                        <div class="user-info">
+                            <div class="user-avatar">{{ userInitials }}</div>
+                            <div class="user-details">
+                                <span class="username">{{ username }}</span>
+                                <span class="timestamp">{{ timestamp }}</span>
+                            </div>
+                        </div>
+                        <button class="add-member-btn" @click="viewMember">
+                            <span>👁</span>
+                            <span>View member</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="member-panel" :class="{ visible: showPanel }">
+                <div class="panel-header">
+                    <h3 class="panel-title">Member Details</h3>
+                    <button class="close-btn" @click="closePanel">×</button>
+                </div>
+
+                <div class="member-details">
+                    <div class="detail-section">
+                        <div class="detail-label">Full Name</div>
+                        <div class="detail-value">{{ memberDetails.name }}</div>
+                    </div>
+
+                    <div class="detail-section">
+                        <div class="detail-label">Username</div>
+                        <div class="detail-value">{{ memberDetails.username }}</div>
+                    </div>
+
+                    <div class="detail-section">
+                        <div class="detail-label">Email</div>
+                        <div class="detail-value">{{ memberDetails.email }}</div>
+                    </div>
+
+                    <div class="detail-section">
+                        <div class="detail-label">Role</div>
+                        <div class="detail-value">{{ memberDetails.role }}</div>
+                    </div>
+
+                    <div class="detail-section">
+                        <div class="detail-label">Status</div>
+                        <div class="detail-value status-badge">
+                            <span class="status-dot"></span>
+                            {{ memberDetails.status }}
+                        </div>
+                    </div>
+
+                    <div class="detail-section">
+                        <div class="detail-label">Bio</div>
+                        <div class="detail-value">{{ memberDetails.bio }}</div>
+                    </div>
+
+                    <div class="detail-section">
+                        <div class="detail-label">Joined</div>
+                        <div class="detail-value">{{ memberDetails.joined }}</div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="action-btn primary" @click="sendMessage">
+                            <span>💬</span>
+                            Send Message
+                        </button>
+                        <button class="action-btn secondary" @click="viewProfile">
+                            <span>🔗</span>
+                            View Profile
+                        </button>
+                        <button class="action-btn secondary" @click="viewGitHub">
+                            <span>💻</span>
+                            GitHub Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
