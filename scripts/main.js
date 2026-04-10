@@ -4,16 +4,9 @@ createApp({
     data() {
         return {
             profileName: 'Henrix Bradley Moyo',
-            status: 'Available',
-            username: '@henrixmoyo',
-            timestamp: 'Online now',
-            userInitials: 'HM',
-            rotateX: 0,
-            rotateY: 0,
-            mouseX: 50,
-            mouseY: 50,
             showPanel: false,
             showAllExperience: false,
+            activeTab: 'about',
             socialLinks: {
                 github: 'https://github.com/Henrix06',
                 linkedin: 'https://www.linkedin.com/in/henrix-moyo-a7289b11a',
@@ -132,18 +125,6 @@ createApp({
         }
     },
     computed: {
-        cardStyle() {
-            return {
-                transform: `perspective(1000px) rotateX(${this.rotateX}deg) rotateY(${this.rotateY}deg) scale3d(1.02, 1.02, 1.02)`,
-                transition: this.rotateX === 0 && this.rotateY === 0 ? 'transform 0.5s ease' : 'none'
-            };
-        },
-        shineStyle() {
-            return {
-                '--mouse-x': `${this.mouseX}%`,
-                '--mouse-y': `${this.mouseY}%`
-            };
-        },
         visibleWorkExperience() {
             if (this.showAllExperience) {
                 return this.memberDetails.workExperience;
@@ -154,41 +135,91 @@ createApp({
             return this.memberDetails.workExperience.length > 2;
         }
     },
+    mounted() {
+        this._onKeydown = (e) => { if (e.key === 'Escape' && this.showPanel) this.closePanel(); };
+        document.addEventListener('keydown', this._onKeydown);
+        this._rafPending = false;
+        this._depthEls = [];
+        this.$nextTick(() => this._initParallax());
+    },
+    unmounted() {
+        document.removeEventListener('keydown', this._onKeydown);
+    },
     methods: {
         handleMouseMove(e) {
-            const card = this.$refs.card;
-            const rect = card.getBoundingClientRect();
-            
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = ((y - centerY) / centerY) * -10;
-            const rotateY = ((x - centerX) / centerX) * 10;
-            
-            this.rotateX = rotateX;
-            this.rotateY = rotateY;
-            
-            this.mouseX = (x / rect.width) * 100;
-            this.mouseY = (y / rect.height) * 100;
+            // No-op if parallax disabled (touch/reduced-motion)
+            if (!this._depthEls.length) return;
+            // Throttle to one update per animation frame
+            if (this._rafPending) return;
+            this._rafPending = true;
+
+            requestAnimationFrame(() => {
+                this._rafPending = false;
+                const card = this.$refs.card;
+                if (!card) return;
+
+                const rect = card.getBoundingClientRect();
+                const nx = ((e.clientX - rect.left) / rect.width  - 0.5) * 2;
+                const ny = ((e.clientY - rect.top)  / rect.height - 0.5) * 2;
+
+                // Write card tilt directly to style — bypasses Vue reactivity
+                card.style.transform = `perspective(1000px) rotateX(${ny * -10}deg) rotateY(${nx * 10}deg) scale3d(1.02,1.02,1.02)`;
+                card.style.transition = 'none';
+
+                // Shine
+                card.style.setProperty('--mouse-x', `${(nx * 50 + 50)}%`);
+                card.style.setProperty('--mouse-y', `${(ny * 50 + 50)}%`);
+
+                // Per-layer parallax — use cached node list
+                this._depthEls.forEach(el => {
+                    const depth = el._depth;
+                    el.style.transform = `translateZ(${depth}px) translate(${nx * depth * 0.4}px, ${ny * depth * 0.4}px)`;
+                });
+            });
         },
         handleMouseLeave() {
-            this.rotateX = 0;
-            this.rotateY = 0;
+            this._rafPending = false;
+            const card = this.$refs.card;
+            if (!card) return;
+
+            card.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+
+            this._depthEls.forEach(el => {
+                el.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+                el.style.transform = `translateZ(${el._depth}px) translate(0px, 0px)`;
+            });
+
+            // Remove will-change after animation settles
+            setTimeout(() => {
+                card.style.willChange = 'auto';
+                this._depthEls.forEach(el => { el.style.willChange = 'auto'; });
+            }, 650);
+        },
+        _initParallax() {
+            // Skip on touch devices and when user prefers reduced motion
+            if (window.matchMedia('(hover: none)').matches) return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            const card = this.$refs.card;
+            if (!card) return;
+            // Cache depth elements and parse depth once
+            this._depthEls = Array.from(card.querySelectorAll('[data-depth]'));
+            this._depthEls.forEach(el => { el._depth = parseFloat(el.dataset.depth); });
+            // Prime will-change only on first hover
+            card.addEventListener('mouseenter', () => {
+                card.style.willChange = 'transform';
+                this._depthEls.forEach(el => { el.style.willChange = 'transform'; });
+            }, { passive: true });
         },
         viewMember() {
             this.showPanel = true;
+            this.activeTab = 'about';
+            document.body.style.overflow = 'hidden';
         },
         closePanel() {
             this.showPanel = false;
-        },
-        sendMessage() {
-            alert('Contact Henrix: https://www.linkedin.com/in/henrix-moyo-a7289b11a/');
-        },
-        viewProfile() {
-            window.open('https://www.linkedin.com/in/henrix-moyo-a7289b11a/', '_blank');
+            document.body.style.overflow = '';
         },
         viewGitHub() {
             window.open('https://github.com/Henrix06', '_blank');

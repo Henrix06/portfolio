@@ -5,37 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Card</title>
     <link rel="icon" type="image/png" href="images/favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="preload" href="images/henrix.png" as="image">
 </head>
 <body>
     <div id="app">
-        <div class="container-wrapper" :class="{ shifted: showPanel }">
+        <div class="container-wrapper">
             <div class="profile-card" 
                  ref="card"
                  @mousemove="handleMouseMove"
-                 @mouseleave="handleMouseLeave"
-                 :style="cardStyle">
-                <div class="shine" :style="shineStyle"></div>
+                 @mouseleave="handleMouseLeave">
+                <div class="shine"></div>
                 <div class="profile-card-inner">
-                    
-
-                    <div class="profile-image-container">
+                    <div class="profile-image-container" data-depth="40">
                         <img src="images/henrix.png" 
                              alt="Profile" 
-                             class="profile-image">
+                             class="profile-image"
+                             width="400"
+                             height="400"
+                             loading="eager"
+                             decoding="async"
+                             fetchpriority="high">
                     </div>
-                    <div class="profile-header">
+                    <div class="profile-header" data-depth="20">
                         <h2 class="profile-name">{{ profileName }}</h2>
-                        <div class="status-container">
-                            
-                        </div>
                     </div>
 
-                    <div class="profile-footer">
-                       
-                        
-                        <div class="social-icons">
+                    <div class="profile-footer" data-depth="30">
+                        <div class="social-icons" data-depth="35">
                             <a :href="socialLinks.github" target="_blank" class="social-icon" title="GitHub">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M12 0C5.37 0 0 5.37 0 12C0 17.31 3.435 21.795 8.205 23.385C8.805 23.49 9.03 23.13 9.03 22.815C9.03 22.53 9.015 21.585 9.015 20.58C6 21.135 5.22 19.845 4.98 19.17C4.845 18.825 4.26 17.76 3.75 17.475C3.33 17.25 2.73 16.695 3.735 16.68C4.68 16.665 5.385 17.55 5.61 17.91C6.6 19.725 8.385 19.215 9.075 18.9C9.18 18.12 9.495 17.595 9.84 17.295C7.17 16.995 4.38 15.96 4.38 11.37C4.38 10.065 4.845 8.985 5.625 8.145C5.49 7.845 5.07 6.615 5.73 4.965C5.73 4.965 6.735 4.635 9.03 6.165C9.99 5.91 11.01 5.7825 12.03 5.7825C13.05 5.7825 14.07 5.91 15.03 6.165C17.31 4.62 18.315 4.965 18.315 4.965C18.975 6.615 18.555 7.845 18.42 8.145C19.2 8.985 19.665 10.05 19.665 11.37C19.665 15.975 16.86 16.995 14.175 17.295C14.64 17.67 15.045 18.39 15.045 19.515C15.045 21.12 15.03 22.41 15.03 22.815C15.03 23.13 15.255 23.505 15.87 23.385C20.565 21.795 24 17.295 24 12C24 5.37 18.63 0 12 0Z" fill="currentColor"/>
@@ -54,16 +51,21 @@
                             </a>
                         </div>
 
-                        <button class="add-member-btn" @click="viewMember">
+                        <button class="add-member-btn" data-depth="25" @click="viewMember">
                             View Profile
                         </button>
                     </div>
                 </div>
             </div>
+        </div>
 
+        <!-- Modal overlay -->
+        <div class="modal-overlay" :class="{ visible: showPanel }" @click.self="closePanel">
             <div class="member-panel" :class="{ visible: showPanel }">
                 <div class="panel-header">
-                    <button class="close-btn" @click="closePanel">×</button>
+                    <!-- Mobile drag handle -->
+                    <div class="drag-handle"></div>
+                    <button class="close-btn" @click="closePanel" aria-label="Close">×</button>
                 </div>
 
                 <div class="profile-header-section">
@@ -71,8 +73,15 @@
                     <p class="profile-subtitle">{{ memberDetails.role }}</p>
                 </div>
 
+                <!-- ── Mobile tab nav (hidden on desktop) ── -->
+                <div class="mobile-tabs">
+                    <button class="mobile-tab" :class="{ active: activeTab === 'about' }" @click="activeTab = 'about'">About</button>
+                    <button class="mobile-tab" :class="{ active: activeTab === 'experience' }" @click="activeTab = 'experience'">Experience</button>
+                </div>
+
                 <div class="profile-content">
-                    <div class="profile-left-column">
+                    <!-- Left column / About tab -->
+                    <div class="profile-left-column" :class="{ 'tab-active': activeTab === 'about' }">
                         <div class="profile-section">
                             <h3 class="section-title">CONTACT</h3>
                             <div class="about-items">
@@ -113,13 +122,8 @@
 
                         <div class="profile-section">
                             <h3 class="section-title">CERTIFICATIONS</h3>
-                            <div class="influencer-list">
-                                <div class="influencer-item" v-for="(item, index) in memberDetails.certifications" :key="index">
-                                    <span class="influencer-label">{{ item.name }}</span>
-                                    <div class="influencer-bar">
-                                        <div class="influencer-bar-fill" :style="{ width: '100%' }"></div>
-                                    </div>
-                                </div>
+                            <div class="cert-list">
+                                <span class="cert-tag" v-for="(item, index) in memberDetails.certifications" :key="index">{{ item.name }}</span>
                             </div>
                         </div>
 
@@ -152,7 +156,8 @@
                         </div>
                     </div>
 
-                    <div class="profile-right-column">
+                    <!-- Right column / Experience tab -->
+                    <div class="profile-right-column" :class="{ 'tab-active': activeTab === 'experience' }">
                         <div class="profile-section">
                             <h3 class="section-title">WORK EXPERIENCE</h3>
                             <div class="experience-list">
@@ -195,10 +200,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div><!-- /modal-overlay -->
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.js"></script>
-    <script src="scripts/main.js"></script>
+    <script src="scripts/vue.global.prod.js"></script>
+    <script src="scripts/main.js" defer></script>
 </body>
 </html>
