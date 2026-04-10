@@ -21,7 +21,7 @@
 <IfModule mod_headers.c>
     # Cache static assets aggressively
     <FilesMatch "\.(css|js|png|jpg|jpeg|gif|webp|svg|ico|woff|woff2)$">
-        Header set Cache-Control "public, max-age=2592000, immutable"
+        Header set Cache-Control "public, max-age=2592000"
     </FilesMatch>
     # HTML: short cache, must revalidate
     <FilesMatch "\.html$">
