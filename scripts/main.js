@@ -3,124 +3,120 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
-            profileName: 'Henrix Bradley Moyo',
+            profileName: 'Henrix Moyo',
             showPanel: false,
             showAllExperience: false,
             activeTab: 'about',
             socialLinks: {
                 github: 'https://github.com/Henrix06',
                 linkedin: 'https://www.linkedin.com/in/henrix-moyo-a7289b11a',
-                website: 'https://certdirectory.io/profile/6cb8f4b7-5d5a-45e6-9357-dffec9b345d7'
+                website: 'https://henrix.co.zw'
             },
             memberDetails: {
-                name: 'Henrix Bradley Moyo',
-                role: 'Web Developer @ National University of Science and Technology | Computer Science',
-                mobile: '+263777982884',
-                email: 'henrixm@gmail.com',
-                linkedin: 'www.linkedin.com/in/henrix-moyo-a7289b11a',
-                topSkills: 'Web Development, DevOps, C#',
+                name: 'Henrix Moyo',
+                role: 'Software Developer | Full-Stack Engineer | C# / PHP Developer',
+                mobile: '+263 777 982 884',
+                email: 'henrixm@protonmail.com',
+                linkedin: 'linkedin.com/in/henrix-moyo-a7289b11a',
+                topSkills: 'PHP, C#, Laravel, .NET, JavaScript',
                 certifications: [
-                    { name: 'LFC108: Cybersecurity Essentials' },
+                    { name: 'Cybersecurity Essentials (LFC108)' },
                     { name: 'Introduction to Cloud Infrastructure Technologies' }
                 ],
                 workExperience: [
                     {
-                        title: 'Web Developer',
-                        company: 'National University of Science and Technology',
-                        duration: 'February 2024 - Present (1 year 10 months)',
-                        location: 'Bulawayo Province, Zimbabwe',
+                        title: 'Software Developer',
+                        company: 'National University of Science and Technology (NUST)',
+                        duration: 'Feb 2024 – Present',
+                        location: 'Zimbabwe',
                         responsibilities: [
-                            'Designed and rebuilt faculty websites to improve user experience and navigation',
-                            'Developed an intranet site for internal operations and communication',
-                            'Launched a job application portal, streamlining recruitment processes',
-                            'Revamped the main university website to enhance functionality and accessibility',
-                            'Collaborated with cross-functional teams to deliver seamless digital experiences'
+                            'Designed and deployed scalable web platforms to improve accessibility and usability across university systems',
+                            'Developed an internal intranet system, improving staff communication and information access',
+                            'Built a job application portal, streamlining recruitment workflows and reducing manual processes',
+                            'Engineered an alumni management system, enabling user engagement and data connectivity',
+                            'Improved application performance and user experience through system optimization'
                         ]
                     },
                     {
-                        title: 'Web Developer and Webmaster',
-                        company: 'Freelance',
-                        duration: 'February 2022 - Present (3 years 10 months)',
+                        title: 'Freelance Software Developer',
+                        company: 'Remote',
+                        duration: 'Feb 2022 – Present',
                         location: 'Remote',
                         responsibilities: [
-                            'Managed website performance, security, and optimization for multiple clients',
-                            'Optimized websites for speed, usability, and search engine visibility',
-                            'Developed and implemented content updates using HTML, CSS, and PHP',
-                            'Troubleshot technical issues and provided ongoing maintenance support',
-                            'Configured web servers and managed database operations'
+                            'Designed, developed, and maintained client web applications across multiple industries',
+                            'Improved website performance through optimization techniques, reducing load times and increasing engagement',
+                            'Implemented security best practices to safeguard applications and user data',
+                            'Provided technical support, debugging, and system maintenance',
+                            'Built dynamic web solutions using PHP, Laravel, and frontend technologies'
                         ]
                     },
                     {
-                        title: 'Unity3D Game Developer',
+                        title: 'Unity Game Developer',
                         company: 'ShiftSpace',
-                        duration: 'June 2022 - June 2024 (2 years 1 month)',
-                        location: 'Bulawayo, Bulawayo, Zimbabwe',
+                        duration: 'Jun 2022 – Jun 2024',
+                        location: 'Zimbabwe',
                         responsibilities: [
-                            'Leveraged Unity for mobile game development projects',
-                            'Created engaging gameplay mechanics and user interfaces',
-                            'Optimized game performance for mobile platforms',
-                            'Collaborated with designers and artists to bring concepts to life'
+                            'Developed cross-platform applications using Unity and C#',
+                            'Built interactive gameplay systems and prototypes',
+                            'Integrated APIs and third-party services into applications',
+                            'Collaborated with cross-functional teams to deliver high-quality user experiences',
+                            'Wrote clean, maintainable, and reusable code'
                         ]
                     },
                     {
                         title: 'Game Developer',
                         company: 'ShiftSpace',
-                        duration: 'February 2021 - June 2022 (1 year 5 months)',
-                        location: 'Bulawayo, Bulawayo, Zimbabwe',
+                        duration: 'Feb 2021 – Jun 2022',
+                        location: 'Zimbabwe',
                         responsibilities: [
-                            'Wrote clean, maintainable code following best practices',
-                            'Coordinated cross-platform prototype development',
-                            'Managed creative assets and source code using version control',
-                            'Created and managed APIs for game services and integrations'
+                            'Developed gameplay mechanics and system features using C#',
+                            'Participated in collaborative development and version control workflows',
+                            'Rapidly learned and implemented new tools and technologies'
                         ]
                     },
                     {
                         title: 'Webmaster',
                         company: 'NivaCity',
-                        duration: 'June 2022 - July 2023 (1 year 2 months)',
+                        duration: 'Jun 2022 – Jul 2023',
                         location: 'South Africa',
                         responsibilities: [
-                            'Troubleshot web development issues and resolved technical problems',
-                            'Configured and maintained web servers for optimal performance',
-                            'Managed databases and ensured data integrity',
-                            'Monitored websites for security vulnerabilities and performance metrics',
-                            'Implemented SEO strategies to improve search engine rankings',
-                            'Upgraded software, plugins, and maintained system security',
-                            'Provided customer service and technical support'
+                            'Managed website infrastructure, databases, and hosting environments',
+                            'Monitored and improved system performance and uptime',
+                            'Implemented SEO strategies to increase traffic and engagement',
+                            'Strengthened website security and reliability',
+                            'Resolved technical issues and maintained system stability'
                         ]
                     },
                     {
                         title: 'Website Developer & Webmaster',
                         company: 'Kingstone Brand Management Agency',
-                        duration: 'August 2021 - January 2022 (6 months)',
-                        location: 'Bulawayo, Zimbabwe',
+                        duration: 'Aug 2021 – Jan 2022',
+                        location: 'Zimbabwe',
                         responsibilities: [
-                            'Developed websites from concept to completion',
-                            'Created responsive layouts and user interfaces',
-                            'Increased website traffic through SEO optimization',
-                            'Implemented new design features and functionality',
-                            'Reduced server response time for improved performance',
-                            'Upgraded software and plugins to maintain security',
-                            'Managed databases and ensured data integrity'
+                            'Developed and deployed websites from concept to production',
+                            'Designed user interfaces and navigation systems',
+                            'Improved performance through caching and optimization techniques',
+                            'Increased website traffic through SEO implementation',
+                            'Maintained backend systems and databases'
                         ]
                     },
                     {
-                        title: 'Intern',
-                        company: 'Interm',
-                        duration: 'December 2020 - July 2021 (8 months)',
-                        location: 'Bulawayo, Zimbabwe',
+                        title: 'Intern – Web Development',
+                        company: 'Kingstone Brand Management Agency',
+                        duration: 'Dec 2020 – Jul 2021',
+                        location: 'Zimbabwe',
                         responsibilities: [
-                            'Tested and debugged websites to ensure functionality',
-                            'Collaborated with developers and designers on projects',
-                            'Contributed to new and existing website development',
-                            'Ensured W3C compliance and web standards adherence'
+                            'Tested, debugged, and maintained web applications',
+                            'Collaborated with developers and designers on production systems',
+                            'Ensured compliance with web standards and best practices',
+                            'Contributed to development of new features'
                         ]
                     }
                 ],
-                coreCompetencies: 'Web development, DevOps, HTML, PHP, WordPress, Unity3D, Mobile Development, SEO, Database Management, Web Server Configuration, API Development, Source Code Management',
-                education: 'National University of Science and Technology - Computer Science (August 2018 - July 2022)',
+                coreCompetencies: 'API Development, System Design, Performance Optimization, Web Security, Backend Architecture, Database Management, SEO, Git, Linux Servers',
+                education: 'Bachelor of Science in Computer Science — National University of Science and Technology (2018 – 2022)',
                 yearsExperience: 4,
-                currentRole: 'Web Developer'
+                currentRole: 'Software Developer'
             }
         }
     },
