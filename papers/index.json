@@ -1,0 +1,11 @@
+[
+  {
+    "slug": "cybersecurity-essentials-web",
+    "type": "paper",
+    "title": "Cybersecurity Essentials for Web Developers",
+    "date": "2025-01",
+    "excerpt": "A practical overview of the security principles every web developer should know — covering OWASP top 10, secure headers, input validation, and server hardening.",
+    "tags": ["Security", "Web Development", "DevOps"],
+    "file": "cybersecurity-essentials-web.html"
+  }
+]

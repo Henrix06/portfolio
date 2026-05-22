@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Essentials for Web Developers - Henrix Moyo</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="stylesheet" href="../styles/main.css">
+    <style>
+        .paper-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f0f0f0 0%, #fafafa 50%, #e8e8e8 100%);
+            padding: 2rem 1.5rem 5rem;
+        }
+
+        .paper-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(0,0,0,0.55);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 2.5rem;
+            transition: color 0.2s;
+        }
+        .paper-back:hover { color: rgba(0,0,0,0.9); }
+
+        .paper-container {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .paper-header { margin-bottom: 2.5rem; }
+
+        .paper-header-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .paper-badge {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            background: #e8f4ff;
+            color: #1a6fb5;
+        }
+
+        .paper-header-date {
+            font-size: 0.82rem;
+            color: rgba(0,0,0,0.4);
+        }
+
+        .paper-header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: rgba(0,0,0,0.9);
+            line-height: 1.2;
+            margin: 0 0 1rem;
+        }
+
+        .paper-header-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .paper-header-tag {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            background: rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 8px;
+            color: rgba(0,0,0,0.55);
+        }
+
+        .paper-divider {
+            height: 1px;
+            background: rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        /* Article body typography */
+        .paper-body {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: rgba(0,0,0,0.78);
+        }
+
+        .paper-body h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: rgba(0,0,0,0.9);
+            margin: 2.5rem 0 0.75rem;
+        }
+
+        .paper-body h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: rgba(0,0,0,0.85);
+            margin: 2rem 0 0.5rem;
+        }
+
+        .paper-body p { margin: 0 0 1.25rem; }
+
+        .paper-body ul, .paper-body ol {
+            padding-left: 1.5rem;
+            margin: 0 0 1.25rem;
+        }
+
+        .paper-body li { margin-bottom: 0.4rem; }
+
+        .paper-body code {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.875em;
+            background: rgba(0,0,0,0.06);
+            padding: 0.15em 0.4em;
+            border-radius: 4px;
+            color: rgba(0,0,0,0.8);
+        }
+
+        .paper-body pre {
+            background: rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 10px;
+            padding: 1.25rem;
+            overflow-x: auto;
+            margin: 0 0 1.25rem;
+        }
+
+        .paper-body pre code {
+            background: none;
+            padding: 0;
+            font-size: 0.875rem;
+        }
+
+        .paper-body blockquote {
+            border-left: 3px solid rgba(0,0,0,0.15);
+            margin: 0 0 1.25rem;
+            padding: 0.5rem 0 0.5rem 1.25rem;
+            color: rgba(0,0,0,0.55);
+            font-style: italic;
+        }
+
+        .paper-body strong { color: rgba(0,0,0,0.9); }
+
+        /* Dark mode */
+        @media (prefers-color-scheme: dark) {
+            .paper-page { background: linear-gradient(135deg, #1a1a1a 0%, #222 50%, #1a1a1a 100%); }
+            .paper-back { color: rgba(255,255,255,0.45); }
+            .paper-back:hover { color: rgba(255,255,255,0.9); }
+            .paper-header h1 { color: rgba(255,255,255,0.92); }
+            .paper-header-date { color: rgba(255,255,255,0.35); }
+            .paper-badge { background: rgba(26,111,181,0.2); color: #7ab8e8; }
+            .paper-header-tag { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); }
+            .paper-divider { background: rgba(255,255,255,0.1); }
+            .paper-body { color: rgba(255,255,255,0.72); }
+            .paper-body h2 { color: rgba(255,255,255,0.9); }
+            .paper-body h3 { color: rgba(255,255,255,0.85); }
+            .paper-body strong { color: rgba(255,255,255,0.9); }
+            .paper-body code { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.8); }
+            .paper-body pre { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.08); }
+            .paper-body blockquote { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.45); }
+        }
+
+        @media (max-width: 768px) {
+            .paper-page { padding: 1.25rem 1rem 3rem; }
+            .paper-header h1 { font-size: 1.75rem; }
+            .paper-body { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="paper-page">
+        <a href="../papers.html" class="paper-back">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Papers &amp; Stories
+        </a>
+
+        <div class="paper-container">
+            <div class="paper-header">
+                <div class="paper-header-meta">
+                    <span class="paper-badge">Paper</span>
+                    <span class="paper-header-date">January 2025</span>
+                </div>
+                <h1>Cybersecurity Essentials for Web Developers</h1>
+                <div class="paper-header-tags">
+                    <span class="paper-header-tag">Security</span>
+                    <span class="paper-header-tag">Web Development</span>
+                    <span class="paper-header-tag">DevOps</span>
+                </div>
+            </div>
+
+            <div class="paper-divider"></div>
+
+            <div class="paper-body">
+                <p>
+                    Security is not a feature you bolt on at the end of a project — it is a discipline woven into every decision from architecture to deployment. This paper covers the practical security principles every web developer should understand, drawing from the OWASP Top 10, real-world server hardening, and lessons learned managing production web environments.
+                </p>
+
+                <h2>1. Input Validation and Injection Attacks</h2>
+                <p>
+                    The most persistent class of vulnerabilities in web applications stems from trusting user input. SQL injection, command injection, and cross-site scripting (XSS) all share the same root cause: data treated as code.
+                </p>
+                <h3>SQL Injection</h3>
+                <p>
+                    Never concatenate user input into SQL queries. Use parameterised queries or prepared statements in every database interaction.
+                </p>
+                <pre><code>// Bad
+$query = "SELECT * FROM users WHERE email = '" . $_POST['email'] . "'";
+
+// Good — parameterised
+$stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+$stmt->execute([$_POST['email']]);</code></pre>
+
+                <h3>Cross-Site Scripting (XSS)</h3>
+                <p>
+                    Escape all output rendered into HTML. Use <code>htmlspecialchars()</code> in PHP, or rely on a templating engine that auto-escapes by default. Set a strict Content Security Policy header to limit what scripts can execute.
+                </p>
+
+                <h2>2. Authentication and Session Management</h2>
+                <p>
+                    Weak authentication is the second most common entry point for attackers. Key practices:
+                </p>
+                <ul>
+                    <li>Hash passwords with <strong>bcrypt</strong> or <strong>Argon2</strong> — never MD5 or SHA1.</li>
+                    <li>Enforce minimum password length and breach-list checking.</li>
+                    <li>Regenerate session IDs on login and privilege escalation.</li>
+                    <li>Set session cookies with <code>HttpOnly</code>, <code>Secure</code>, and <code>SameSite=Strict</code>.</li>
+                    <li>Implement rate limiting on login endpoints to prevent brute force.</li>
+                </ul>
+
+                <h2>3. Security Headers</h2>
+                <p>
+                    HTTP response headers are a low-effort, high-impact layer of defence. The following should be set on every response:
+                </p>
+                <pre><code>X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: strict-origin-when-cross-origin
+Content-Security-Policy: default-src 'self'; script-src 'self'
+Strict-Transport-Security: max-age=31536000; includeSubDomains</code></pre>
+                <p>
+                    <code>X-Content-Type-Options: nosniff</code> prevents browsers from MIME-sniffing a response away from the declared content type — a common vector for content injection attacks.
+                </p>
+
+                <h2>4. HTTPS and Transport Security</h2>
+                <p>
+                    All traffic must be encrypted in transit. Obtain a TLS certificate (Let's Encrypt provides free certificates) and redirect all HTTP traffic to HTTPS. Enable HSTS to instruct browsers to only connect over HTTPS for a defined period.
+                </p>
+                <blockquote>
+                    A site without HTTPS is not just insecure — it is untrustworthy. Modern browsers actively warn users, and search engines penalise it.
+                </blockquote>
+
+                <h2>5. File Upload Security</h2>
+                <p>
+                    File uploads are a common attack surface. Validate file type by inspecting the MIME type server-side (not just the extension), store uploaded files outside the web root, and never execute uploaded files. Limit file size at both the application and server level.
+                </p>
+
+                <h2>6. Server Hardening</h2>
+                <p>
+                    Application-level security is only as strong as the server it runs on:
+                </p>
+                <ul>
+                    <li>Disable directory listing (<code>Options -Indexes</code> in Apache).</li>
+                    <li>Remove or restrict access to sensitive files (<code>.env</code>, <code>config.php</code>, <code>.git</code>).</li>
+                    <li>Keep software, plugins, and dependencies updated.</li>
+                    <li>Run web processes under a least-privilege user account.</li>
+                    <li>Monitor logs for anomalous patterns — repeated 404s, unusual POST volumes, or scanning behaviour.</li>
+                </ul>
+
+                <h2>Conclusion</h2>
+                <p>
+                    Security is a continuous practice, not a checklist. The principles above address the most common and impactful vulnerabilities, but the threat landscape evolves constantly. Staying current with OWASP guidance, subscribing to CVE feeds for your dependencies, and building a habit of security-first thinking are the most durable investments a developer can make.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
