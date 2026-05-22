@@ -223,6 +223,9 @@ createApp({
         goToPortfolio() {
             window.location.href = 'portfolio.html';
         },
+        goToPapers() {
+            window.location.href = 'papers.html';
+        },
         toggleExperience() {
             this.showAllExperience = !this.showAllExperience;
         }

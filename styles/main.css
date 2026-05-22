@@ -403,7 +403,8 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
 }
 
 .portfolio-btn,
-.github-btn {
+.github-btn,
+.papers-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -420,8 +421,9 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
     transition: background 0.2s ease, transform 0.2s ease;
 }
 .portfolio-btn:hover,
-.github-btn:hover { background: rgba(255,255,255,0.65); transform: translateY(-1px); }
-.portfolio-btn svg, .github-btn svg { flex-shrink: 0; }
+.github-btn:hover,
+.papers-btn:hover { background: rgba(255,255,255,0.65); transform: translateY(-1px); }
+.portfolio-btn svg, .github-btn svg, .papers-btn svg { flex-shrink: 0; }
 
 .profile-summary {
     display: flex;
@@ -674,6 +676,7 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
 
     .portfolio-btn,
     .github-btn,
+    .papers-btn,
     .read-more-btn {
         background: #f2f2f7;
         border: none;
@@ -683,6 +686,7 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
     }
     .portfolio-btn:hover,
     .github-btn:hover,
+    .papers-btn:hover,
     .read-more-btn:hover { background: #e5e5ea; transform: none; }
 
     /* Summary pinned at bottom of sheet */
@@ -794,6 +798,7 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
 
     .portfolio-btn,
     .github-btn,
+    .papers-btn,
     .read-more-btn {
         background: rgba(44,44,46,0.8);
         border-color: rgba(255,255,255,0.12);
@@ -801,6 +806,7 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
     }
     .portfolio-btn:hover,
     .github-btn:hover,
+    .papers-btn:hover,
     .read-more-btn:hover { background: rgba(58,58,60,0.9); }
 
     .profile-summary { border-top-color: rgba(255,255,255,0.1); }
@@ -829,6 +835,7 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
         .experience-location { background: #2c2c2e; }
         .portfolio-btn,
         .github-btn,
+        .papers-btn,
         .read-more-btn { background: #2c2c2e; }
         .profile-summary { border-top-color: rgba(255,255,255,0.1); }
     }
