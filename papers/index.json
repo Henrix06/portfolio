@@ -1,5 +1,25 @@
 [
   {
+    "slug": "ai-adoption-zimbabwe",
+    "type": "paper",
+    "title": "Artificial Intelligence Adoption in Zimbabwe",
+    "subtitle": "A Critical Analysis of Adoption Drivers, Socio-Economic-Religious-Political Influences, and the Consequences of Non-Adoption",
+    "date": "2025-01",
+    "excerpt": "A critical analysis of the drivers behind AI adoption in Zimbabwe, examining socio-economic, religious, and political influences — and the consequences of failing to act.",
+    "tags": ["Artificial Intelligence", "Zimbabwe", "Technology Policy", "Socio-Economics"],
+    "file": "Artificial Intelligence Adoption in Zimbabwe_ A Critical Analysis of Adoption Drivers, Socio-Economic-Religious-Political Influences, and the Consequences of Non-Adoption.docx"
+  },
+  {
+    "slug": "beyond-conference-room-zimbabwe-ai",
+    "type": "paper",
+    "title": "Beyond the Conference Room",
+    "subtitle": "Why Zimbabwe Must Invest Seriously in Artificial Intelligence",
+    "date": "2025-01",
+    "excerpt": "Moving past talk and into action — a case for why Zimbabwe needs serious, sustained investment in artificial intelligence infrastructure, talent, and policy.",
+    "tags": ["Artificial Intelligence", "Zimbabwe", "Investment", "Policy"],
+    "file": "Beyond the Conference Room_ Why Zimbabwe Must Invest Seriously in Artificial Intelligence.docx"
+  },
+  {
     "slug": "cybersecurity-essentials-web",
     "type": "paper",
     "title": "Cybersecurity Essentials for Web Developers",

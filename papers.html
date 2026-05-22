@@ -7,12 +7,12 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="styles/main.css">
     <style>
+        /* ── Page ── */
         .papers-page {
             min-height: 100vh;
             background: linear-gradient(135deg, #f0f0f0 0%, #fafafa 50%, #e8e8e8 100%);
             padding: 2rem 1.5rem 4rem;
         }
-
         .papers-back {
             display: inline-flex;
             align-items: center;
@@ -25,7 +25,6 @@
             transition: color 0.2s;
         }
         .papers-back:hover { color: rgba(0,0,0,0.9); }
-
         .papers-hero { margin-bottom: 3rem; }
         .papers-hero h1 {
             font-size: 2.75rem;
@@ -37,14 +36,8 @@
             margin: 0 0 0.5rem;
             line-height: 1.15;
         }
-        .papers-hero p {
-            font-size: 1.05rem;
-            color: rgba(0,0,0,0.55);
-            margin: 0;
-        }
-
+        .papers-hero p { font-size: 1.05rem; color: rgba(0,0,0,0.55); margin: 0; }
         .papers-section { margin-bottom: 3.5rem; }
-
         .section-label {
             display: flex;
             align-items: center;
@@ -60,20 +53,14 @@
             margin: 0;
             white-space: nowrap;
         }
-        .section-label::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: rgba(0,0,0,0.1);
-        }
-
+        .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(0,0,0,0.1); }
         .papers-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 1.25rem;
         }
 
-        /* ── Paper card ── */
+        /* ── Card ── */
         .paper-card {
             background: rgba(255,255,255,0.6);
             backdrop-filter: blur(20px) saturate(160%);
@@ -86,102 +73,41 @@
             flex-direction: column;
             gap: 0.85rem;
             transition: transform 0.25s ease, box-shadow 0.25s ease;
-            text-decoration: none;
-            color: inherit;
             cursor: pointer;
         }
-        .paper-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.11);
-        }
-
-        .paper-card-meta {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
+        .paper-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.11); }
+        .paper-card-meta { display: flex; align-items: center; gap: 0.6rem; }
         .paper-type-badge {
-            font-size: 0.68rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            padding: 0.2rem 0.6rem;
-            border-radius: 6px;
+            font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.8px; padding: 0.2rem 0.6rem; border-radius: 6px;
         }
         .paper-type-badge.paper   { background: #e8f4ff; color: #1a6fb5; }
         .paper-type-badge.story   { background: #f0eaff; color: #6b3fa0; }
         .paper-type-badge.article { background: #eafff0; color: #1a7a40; }
-
-        .paper-date {
-            font-size: 0.78rem;
-            color: rgba(0,0,0,0.4);
-        }
-
-        .paper-title {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: rgba(0,0,0,0.9);
-            margin: 0;
-            line-height: 1.35;
-        }
-
-        .paper-excerpt {
-            font-size: 0.875rem;
-            color: rgba(0,0,0,0.6);
-            line-height: 1.6;
-            margin: 0;
-            flex: 1;
-        }
-
-        .paper-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-        }
-
+        .paper-date { font-size: 0.78rem; color: rgba(0,0,0,0.4); }
+        .paper-title { font-size: 1.05rem; font-weight: 700; color: rgba(0,0,0,0.9); margin: 0; line-height: 1.35; }
+        .paper-subtitle { font-size: 0.82rem; color: rgba(0,0,0,0.5); margin: 0; line-height: 1.4; }
+        .paper-excerpt { font-size: 0.875rem; color: rgba(0,0,0,0.6); line-height: 1.6; margin: 0; flex: 1; }
+        .paper-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
         .paper-tag {
-            font-size: 0.72rem;
-            padding: 0.18rem 0.55rem;
-            background: rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.08);
-            border-radius: 8px;
-            color: rgba(0,0,0,0.55);
+            font-size: 0.72rem; padding: 0.18rem 0.55rem;
+            background: rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 8px; color: rgba(0,0,0,0.55);
         }
-
         .paper-read {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            font-size: 0.82rem;
-            font-weight: 500;
-            color: rgba(0,0,0,0.45);
-            transition: color 0.2s, gap 0.2s;
-            margin-top: 0.25rem;
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            font-size: 0.82rem; font-weight: 500; color: rgba(0,0,0,0.45);
+            transition: color 0.2s, gap 0.2s; margin-top: 0.25rem;
         }
-        .paper-card:hover .paper-read {
-            color: rgba(0,0,0,0.85);
-            gap: 0.55rem;
-        }
+        .paper-card:hover .paper-read { color: rgba(0,0,0,0.85); gap: 0.55rem; }
 
-        /* ── Loading skeleton ── */
-        .papers-skeleton {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.25rem;
-        }
+        /* ── Skeleton ── */
         .skeleton-card {
-            background: rgba(255,255,255,0.5);
-            border: 1px solid rgba(255,255,255,0.6);
-            border-radius: 18px;
-            padding: 1.75rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.85rem;
+            background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.6);
+            border-radius: 18px; padding: 1.75rem; display: flex; flex-direction: column; gap: 0.85rem;
         }
         .skeleton-line {
-            height: 12px;
-            border-radius: 6px;
+            height: 12px; border-radius: 6px;
             background: linear-gradient(90deg, rgba(0,0,0,0.06) 25%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.06) 75%);
             background-size: 200% 100%;
             animation: shimmer 1.4s ease infinite;
@@ -190,50 +116,133 @@
         .skeleton-line.medium { width: 65%; }
         .skeleton-line.tall { height: 16px; width: 90%; }
         .skeleton-line.full { width: 100%; }
-        @keyframes shimmer {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
+        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
-        /* ── Empty state ── */
+        /* ── Empty / Error ── */
         .papers-empty {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 4rem 2rem;
+            grid-column: 1/-1; text-align: center; padding: 4rem 2rem;
         }
         .papers-empty svg { margin-bottom: 1rem; opacity: 0.2; }
         .papers-empty h3 { font-size: 1rem; font-weight: 600; margin: 0 0 0.4rem; color: rgba(0,0,0,0.45); }
         .papers-empty p { font-size: 0.875rem; color: rgba(0,0,0,0.35); margin: 0; }
+        .papers-error { grid-column: 1/-1; text-align: center; padding: 3rem 2rem; color: rgba(180,0,0,0.7); font-size: 0.9rem; }
 
-        /* ── Error state ── */
-        .papers-error {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 3rem 2rem;
-            color: rgba(180,0,0,0.7);
-            font-size: 0.9rem;
+        /* ── Reader Modal ── */
+        .reader-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 2000;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+        .reader-overlay.visible { opacity: 1; pointer-events: all; }
+
+        .reader-modal {
+            background: #fff;
+            border-radius: 20px;
+            width: 72vw;
+            max-width: 860px;
+            max-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.18);
+            transform: scale(0.97) translateY(12px);
+            transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), opacity 0.25s ease;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .reader-overlay.visible .reader-modal { transform: scale(1) translateY(0); opacity: 1; }
+
+        .reader-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.5rem 1.75rem 1.25rem;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            flex-shrink: 0;
+        }
+        .reader-header-text { flex: 1; min-width: 0; }
+        .reader-header-meta { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+        .reader-title {
+            font-size: 1.25rem; font-weight: 700;
+            color: rgba(0,0,0,0.9); margin: 0 0 0.2rem;
+            line-height: 1.3;
+        }
+        .reader-subtitle { font-size: 0.82rem; color: rgba(0,0,0,0.5); margin: 0; }
+
+        .reader-close {
+            background: rgba(0,0,0,0.06); border: none; border-radius: 50%;
+            width: 32px; height: 32px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; font-size: 1.25rem; color: #555; line-height: 1;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .reader-close:hover { background: rgba(0,0,0,0.1); transform: rotate(90deg); }
+
+        .reader-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.75rem;
         }
 
-        /* ── Dark mode ── */
+        /* Loading spinner inside modal */
+        .reader-loading {
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            gap: 1rem; padding: 4rem 2rem;
+            color: rgba(0,0,0,0.4); font-size: 0.9rem;
+        }
+        .reader-spinner {
+            width: 32px; height: 32px;
+            border: 3px solid rgba(0,0,0,0.1);
+            border-top-color: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Mammoth-rendered content typography */
+        .reader-content { font-size: 0.95rem; line-height: 1.8; color: rgba(0,0,0,0.78); }
+        .reader-content h1 { font-size: 1.5rem; font-weight: 700; color: rgba(0,0,0,0.9); margin: 2rem 0 0.75rem; }
+        .reader-content h2 { font-size: 1.25rem; font-weight: 700; color: rgba(0,0,0,0.9); margin: 1.75rem 0 0.6rem; }
+        .reader-content h3 { font-size: 1.05rem; font-weight: 600; color: rgba(0,0,0,0.85); margin: 1.5rem 0 0.5rem; }
+        .reader-content p { margin: 0 0 1.1rem; }
+        .reader-content ul, .reader-content ol { padding-left: 1.5rem; margin: 0 0 1.1rem; }
+        .reader-content li { margin-bottom: 0.35rem; }
+        .reader-content strong { color: rgba(0,0,0,0.9); }
+        .reader-content em { font-style: italic; }
+        .reader-content table { width: 100%; border-collapse: collapse; margin: 0 0 1.25rem; font-size: 0.875rem; }
+        .reader-content th, .reader-content td { border: 1px solid rgba(0,0,0,0.12); padding: 0.5rem 0.75rem; text-align: left; }
+        .reader-content th { background: rgba(0,0,0,0.04); font-weight: 600; }
+        .reader-content blockquote { border-left: 3px solid rgba(0,0,0,0.15); margin: 0 0 1.1rem; padding: 0.4rem 0 0.4rem 1.25rem; color: rgba(0,0,0,0.55); font-style: italic; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .papers-page { padding: 1.25rem 1rem 3rem; }
+            .papers-hero h1 { font-size: 2rem; }
+            .papers-grid { grid-template-columns: 1fr; }
+            .reader-modal { width: 100%; max-width: 100%; height: 92vh; max-height: 92vh; border-radius: 20px 20px 0 0; }
+            .reader-overlay { align-items: flex-end; }
+            .reader-overlay .reader-modal { transform: translateY(100%); opacity: 1; transition: transform 0.35s cubic-bezier(0.32,0.72,0,1); }
+            .reader-overlay.visible .reader-modal { transform: translateY(0); }
+        }
+
+        /* Dark mode */
         @media (prefers-color-scheme: dark) {
             .papers-page { background: linear-gradient(135deg, #1a1a1a 0%, #222 50%, #1a1a1a 100%); }
             .papers-back { color: rgba(255,255,255,0.5); }
             .papers-back:hover { color: rgba(255,255,255,0.9); }
-            .papers-hero h1 {
-                background: linear-gradient(135deg, #e8e8e8 0%, #aaa 100%);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-            }
+            .papers-hero h1 { background: linear-gradient(135deg, #e8e8e8 0%, #aaa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
             .papers-hero p { color: rgba(255,255,255,0.45); }
             .section-label h2 { color: rgba(255,255,255,0.35); }
             .section-label::after { background: rgba(255,255,255,0.1); }
-            .paper-card {
-                background: rgba(38,38,40,0.8);
-                border-color: rgba(255,255,255,0.1);
-                box-shadow: 0 4px 24px rgba(0,0,0,0.3);
-            }
+            .paper-card { background: rgba(38,38,40,0.8); border-color: rgba(255,255,255,0.1); box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
             .paper-title { color: rgba(255,255,255,0.9); }
+            .paper-subtitle { color: rgba(255,255,255,0.4); }
             .paper-excerpt { color: rgba(255,255,255,0.55); }
             .paper-date { color: rgba(255,255,255,0.3); }
             .paper-tag { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); }
@@ -246,13 +255,21 @@
             .skeleton-line { background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%); background-size: 200% 100%; }
             .papers-empty h3 { color: rgba(255,255,255,0.35); }
             .papers-empty p { color: rgba(255,255,255,0.25); }
-            .papers-error { color: rgba(255,120,120,0.8); }
-        }
-
-        @media (max-width: 768px) {
-            .papers-page { padding: 1.25rem 1rem 3rem; }
-            .papers-hero h1 { font-size: 2rem; }
-            .papers-grid, .papers-skeleton { grid-template-columns: 1fr; }
+            .reader-modal { background: #1c1c1e; }
+            .reader-header { border-bottom-color: rgba(255,255,255,0.1); }
+            .reader-title { color: rgba(255,255,255,0.92); }
+            .reader-subtitle { color: rgba(255,255,255,0.4); }
+            .reader-close { background: rgba(255,255,255,0.08); color: #aaa; }
+            .reader-close:hover { background: rgba(255,255,255,0.14); }
+            .reader-loading { color: rgba(255,255,255,0.4); }
+            .reader-spinner { border-color: rgba(255,255,255,0.1); border-top-color: rgba(255,255,255,0.5); }
+            .reader-content { color: rgba(255,255,255,0.72); }
+            .reader-content h1, .reader-content h2 { color: rgba(255,255,255,0.9); }
+            .reader-content h3 { color: rgba(255,255,255,0.85); }
+            .reader-content strong { color: rgba(255,255,255,0.9); }
+            .reader-content th { background: rgba(255,255,255,0.06); }
+            .reader-content th, .reader-content td { border-color: rgba(255,255,255,0.1); }
+            .reader-content blockquote { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.45); }
         }
     </style>
 </head>
@@ -273,14 +290,9 @@
         <div class="papers-section">
             <div class="section-label"><h2>Papers</h2></div>
             <div class="papers-grid" id="papers-grid">
-                <!-- skeleton while loading -->
-                <div class="papers-skeleton" id="papers-skeleton" style="display:contents">
-                    <div class="skeleton-card">
-                        <div class="skeleton-line short"></div>
-                        <div class="skeleton-line tall"></div>
-                        <div class="skeleton-line full"></div>
-                        <div class="skeleton-line medium"></div>
-                    </div>
+                <div style="display:contents" id="papers-skeleton">
+                    <div class="skeleton-card"><div class="skeleton-line short"></div><div class="skeleton-line tall"></div><div class="skeleton-line full"></div><div class="skeleton-line medium"></div></div>
+                    <div class="skeleton-card"><div class="skeleton-line short"></div><div class="skeleton-line tall"></div><div class="skeleton-line full"></div><div class="skeleton-line medium"></div></div>
                 </div>
             </div>
         </div>
@@ -288,81 +300,162 @@
         <div class="papers-section">
             <div class="section-label"><h2>Stories</h2></div>
             <div class="papers-grid" id="stories-grid">
-                <div class="papers-skeleton" id="stories-skeleton" style="display:contents">
-                    <div class="skeleton-card">
-                        <div class="skeleton-line short"></div>
-                        <div class="skeleton-line tall"></div>
-                        <div class="skeleton-line full"></div>
-                        <div class="skeleton-line medium"></div>
-                    </div>
+                <div style="display:contents" id="stories-skeleton">
+                    <div class="skeleton-card"><div class="skeleton-line short"></div><div class="skeleton-line tall"></div><div class="skeleton-line full"></div><div class="skeleton-line medium"></div></div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Reader modal -->
+    <div class="reader-overlay" id="reader-overlay">
+        <div class="reader-modal" id="reader-modal" role="dialog" aria-modal="true" aria-labelledby="reader-title-el">
+            <div class="reader-header">
+                <div class="reader-header-text">
+                    <div class="reader-header-meta">
+                        <span class="paper-type-badge paper" id="reader-badge">Paper</span>
+                        <span class="paper-date" id="reader-date"></span>
+                    </div>
+                    <h2 class="reader-title" id="reader-title-el"></h2>
+                    <p class="reader-subtitle" id="reader-subtitle-el"></p>
+                </div>
+                <button class="reader-close" id="reader-close" aria-label="Close">&#x2715;</button>
+            </div>
+            <div class="reader-body" id="reader-body">
+                <div class="reader-loading" id="reader-loading">
+                    <div class="reader-spinner"></div>
+                    <span>Loading paper&hellip;</span>
+                </div>
+                <div class="reader-content" id="reader-content" style="display:none"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/mammoth.min.js"></script>
     <script>
-        const ARROW_SVG = `<svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 3L11 8L6 13M11 8H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>`;
+        const ARROW = `<svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3L11 8L6 13M11 8H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
-        const EMPTY_PAPER_SVG = `<svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M14 2V8H20M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>`;
-
-        const EMPTY_STORY_SVG = `<svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>`;
-
-        function formatDate(dateStr) {
-            // Accepts "2025-01" or "2025-01-15"
-            const [year, month] = dateStr.split('-');
-            const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-            return `${months[parseInt(month, 10) - 1]} ${year}`;
+        function formatDate(d) {
+            const [y, m] = d.split('-');
+            return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1] + ' ' + y;
         }
 
         function buildCard(item) {
-            const tags = (item.tags || []).map(t =>
-                `<span class="paper-tag">${t}</span>`
-            ).join('');
-
-            const readLabel = item.type === 'story' ? 'Read story' : 'Read paper';
-
-            return `
-                <a href="papers/${item.file}" class="paper-card">
-                    <div class="paper-card-meta">
-                        <span class="paper-type-badge ${item.type}">${item.type.charAt(0).toUpperCase() + item.type.slice(1)}</span>
-                        <span class="paper-date">${formatDate(item.date)}</span>
-                    </div>
-                    <h3 class="paper-title">${item.title}</h3>
-                    <p class="paper-excerpt">${item.excerpt}</p>
-                    ${tags ? `<div class="paper-tags">${tags}</div>` : ''}
-                    <span class="paper-read">${readLabel} ${ARROW_SVG}</span>
-                </a>`;
+            const tags = (item.tags||[]).map(t=>`<span class="paper-tag">${t}</span>`).join('');
+            const label = item.type === 'story' ? 'Read story' : 'Read paper';
+            const sub = item.subtitle ? `<p class="paper-subtitle">${item.subtitle}</p>` : '';
+            return `<div class="paper-card" data-slug="${item.slug}">
+                <div class="paper-card-meta">
+                    <span class="paper-type-badge ${item.type}">${item.type[0].toUpperCase()+item.type.slice(1)}</span>
+                    <span class="paper-date">${formatDate(item.date)}</span>
+                </div>
+                <h3 class="paper-title">${item.title}</h3>
+                ${sub}
+                <p class="paper-excerpt">${item.excerpt}</p>
+                ${tags ? `<div class="paper-tags">${tags}</div>` : ''}
+                <span class="paper-read">${label} ${ARROW}</span>
+            </div>`;
         }
 
-        function renderEmpty(gridEl, type) {
-            const svg = type === 'story' ? EMPTY_STORY_SVG : EMPTY_PAPER_SVG;
-            const label = type === 'story' ? 'No stories yet' : 'No papers yet';
-            gridEl.innerHTML = `
-                <div class="papers-empty">
-                    ${svg}
-                    <h3>${label}</h3>
-                    <p>Check back soon.</p>
-                </div>`;
+        function renderEmpty(el, type) {
+            const svg = type==='story'
+                ? `<svg width="44" height="44" viewBox="0 0 24 24" fill="none"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+                : `<svg width="44" height="44" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+            el.innerHTML = `<div class="papers-empty">${svg}<h3>No ${type}s yet</h3><p>Check back soon.</p></div>`;
         }
 
-        function renderError(gridEl, msg) {
-            gridEl.innerHTML = `<div class="papers-error">Failed to load: ${msg}</div>`;
+        // ── Reader modal ──
+        const overlay   = document.getElementById('reader-overlay');
+        const loading   = document.getElementById('reader-loading');
+        const content   = document.getElementById('reader-content');
+        const closeBtn  = document.getElementById('reader-close');
+        const badgeEl   = document.getElementById('reader-badge');
+        const dateEl    = document.getElementById('reader-date');
+        const titleEl   = document.getElementById('reader-title-el');
+        const subtitleEl= document.getElementById('reader-subtitle-el');
+
+        // Cache converted HTML so we don't re-fetch on re-open
+        const cache = {};
+
+        function openReader(item) {
+            // Populate header
+            badgeEl.textContent = item.type[0].toUpperCase() + item.type.slice(1);
+            badgeEl.className = `paper-type-badge ${item.type}`;
+            dateEl.textContent = formatDate(item.date);
+            titleEl.textContent = item.title;
+            subtitleEl.textContent = item.subtitle || '';
+            subtitleEl.style.display = item.subtitle ? '' : 'none';
+
+            // Show overlay
+            overlay.classList.add('visible');
+            document.body.style.overflow = 'hidden';
+
+            // Show loading, hide content
+            loading.style.display = 'flex';
+            content.style.display = 'none';
+            content.innerHTML = '';
+
+            if (cache[item.slug]) {
+                loading.style.display = 'none';
+                content.innerHTML = cache[item.slug];
+                content.style.display = '';
+                return;
+            }
+
+            const isDocx = item.file.endsWith('.docx');
+
+            if (isDocx) {
+                fetch('papers/' + encodeURIComponent(item.file))
+                    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.arrayBuffer(); })
+                    .then(buf => mammoth.convertToHtml({ arrayBuffer: buf }))
+                    .then(result => {
+                        cache[item.slug] = result.value;
+                        loading.style.display = 'none';
+                        content.innerHTML = result.value;
+                        content.style.display = '';
+                    })
+                    .catch(err => {
+                        loading.style.display = 'none';
+                        content.innerHTML = `<p style="color:red">Failed to load document: ${err.message}</p>`;
+                        content.style.display = '';
+                    });
+            } else {
+                // HTML paper — fetch and inject body content
+                fetch('papers/' + item.file)
+                    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+                    .then(html => {
+                        const doc = new DOMParser().parseFromString(html, 'text/html');
+                        const body = doc.querySelector('.paper-body');
+                        const result = body ? body.innerHTML : html;
+                        cache[item.slug] = result;
+                        loading.style.display = 'none';
+                        content.innerHTML = result;
+                        content.style.display = '';
+                    })
+                    .catch(err => {
+                        loading.style.display = 'none';
+                        content.innerHTML = `<p style="color:red">Failed to load: ${err.message}</p>`;
+                        content.style.display = '';
+                    });
+            }
         }
 
+        function closeReader() {
+            overlay.classList.remove('visible');
+            document.body.style.overflow = '';
+        }
+
+        closeBtn.addEventListener('click', closeReader);
+        overlay.addEventListener('click', e => { if (e.target === overlay) closeReader(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(); });
+
+        // ── Load manifest ──
         async function loadPapers() {
             const papersGrid  = document.getElementById('papers-grid');
             const storiesGrid = document.getElementById('stories-grid');
-
             try {
                 const res = await fetch('papers/index.json');
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                if (!res.ok) throw new Error('HTTP ' + res.status);
                 const items = await res.json();
 
                 const papers  = items.filter(i => i.type === 'paper' || i.type === 'article');
@@ -374,9 +467,21 @@
                 if (!papers.length)  renderEmpty(papersGrid,  'paper');
                 if (!stories.length) renderEmpty(storiesGrid, 'story');
 
+                // Attach click handlers — use event delegation
+                [papersGrid, storiesGrid].forEach(grid => {
+                    grid.addEventListener('click', e => {
+                        const card = e.target.closest('.paper-card');
+                        if (!card) return;
+                        const slug = card.dataset.slug;
+                        const item = items.find(i => i.slug === slug);
+                        if (item) openReader(item);
+                    });
+                });
+
             } catch (err) {
-                renderError(papersGrid,  err.message);
-                renderError(storiesGrid, err.message);
+                const msg = `<div class="papers-error">Failed to load: ${err.message}</div>`;
+                papersGrid.innerHTML = msg;
+                storiesGrid.innerHTML = msg;
             }
         }
 
