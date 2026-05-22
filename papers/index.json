@@ -4,7 +4,7 @@
     "type": "paper",
     "title": "Artificial Intelligence Adoption in Zimbabwe",
     "subtitle": "A Critical Analysis of Adoption Drivers, Socio-Economic-Religious-Political Influences, and the Consequences of Non-Adoption",
-    "date": "2025-01",
+    "date": "2026-01",
     "excerpt": "A critical analysis of the drivers behind AI adoption in Zimbabwe, examining socio-economic, religious, and political influences — and the consequences of failing to act.",
     "tags": ["Artificial Intelligence", "Zimbabwe", "Technology Policy", "Socio-Economics"],
     "file": "Artificial Intelligence Adoption in Zimbabwe_ A Critical Analysis of Adoption Drivers, Socio-Economic-Religious-Political Influences, and the Consequences of Non-Adoption.docx"
@@ -14,16 +14,25 @@
     "type": "paper",
     "title": "Beyond the Conference Room",
     "subtitle": "Why Zimbabwe Must Invest Seriously in Artificial Intelligence",
-    "date": "2025-01",
+    "date": "2026-03",
     "excerpt": "Moving past talk and into action — a case for why Zimbabwe needs serious, sustained investment in artificial intelligence infrastructure, talent, and policy.",
     "tags": ["Artificial Intelligence", "Zimbabwe", "Investment", "Policy"],
     "file": "Beyond the Conference Room_ Why Zimbabwe Must Invest Seriously in Artificial Intelligence.docx"
   },
   {
+    "slug": "glassmorphism-design-2026",
+    "type": "story",
+    "title": "Glassmorphism: The Definitive Design Choice for 2026–2027",
+    "date": "2026-05",
+    "excerpt": "Why frosted glass interfaces are becoming the universal language of premium digital experiences — from Apple's Liquid Glass to Google's Material You.",
+    "tags": ["UI/UX Design", "CSS", "Design Trends", "Frontend"],
+    "file": "glassmorphism-design-2026.html"
+  },
+  {
     "slug": "cybersecurity-essentials-web",
-    "type": "paper",
+    "type": "story",
     "title": "Cybersecurity Essentials for Web Developers",
-    "date": "2025-01",
+    "date": "2026-02",
     "excerpt": "A practical overview of the security principles every web developer should know — covering OWASP top 10, secure headers, input validation, and server hardening.",
     "tags": ["Security", "Web Development", "DevOps"],
     "file": "cybersecurity-essentials-web.html"
