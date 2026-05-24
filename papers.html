@@ -231,7 +231,21 @@
             .reader-overlay.visible .reader-modal { transform: translateY(0); }
         }
 
-        /* Dark mode */
+        /* ── Disclaimer ── */
+        .papers-disclaimer {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+            background: rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 2.5rem;
+            font-size: 0.82rem;
+            line-height: 1.6;
+            color: rgba(0,0,0,0.5);
+        }
+        .papers-disclaimer svg { flex-shrink: 0; margin-top: 1px; opacity: 0.45; }
         @media (prefers-color-scheme: dark) {
             .papers-page { background: linear-gradient(135deg, #1a1a1a 0%, #222 50%, #1a1a1a 100%); }
             .papers-back { color: rgba(255,255,255,0.5); }
@@ -253,7 +267,7 @@
             .paper-type-badge.article { background: rgba(26,122,64,0.2);  color: #7acf9a; }
             .skeleton-card { background: rgba(44,44,46,0.6); border-color: rgba(255,255,255,0.08); }
             .skeleton-line { background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%); background-size: 200% 100%; }
-            .papers-empty h3 { color: rgba(255,255,255,0.35); }
+            .papers-disclaimer { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.35); }
             .papers-empty p { color: rgba(255,255,255,0.25); }
             .reader-modal { background: #1c1c1e; }
             .reader-header { border-bottom-color: rgba(255,255,255,0.1); }
@@ -285,6 +299,14 @@
         <div class="papers-hero">
             <h1>Papers &amp; Stories</h1>
             <p>Writing on technology, development, and ideas</p>
+        </div>
+
+        <div class="papers-disclaimer">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M8 7v4M8 5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span>These are not academic or peer-reviewed publications. They are personal research pieces — information I've gathered through reading and exploration, written up by me and refined with AI assistance to improve clarity and accuracy.</span>
         </div>
 
         <div class="papers-section">
