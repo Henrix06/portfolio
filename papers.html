@@ -101,6 +101,16 @@
         }
         .paper-card:hover .paper-read { color: rgba(0,0,0,0.85); gap: 0.55rem; }
 
+        .paper-card-footer {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-top: 0.25rem;
+        }
+        .paper-views {
+            display: inline-flex; align-items: center; gap: 0.3rem;
+            font-size: 0.75rem; color: rgba(0,0,0,0.3);
+        }
+        .paper-views svg { opacity: 0.5; }
+
         /* ── Skeleton ── */
         .skeleton-card {
             background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.6);
@@ -262,6 +272,7 @@
             .paper-tag { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); }
             .paper-read { color: rgba(255,255,255,0.35); }
             .paper-card:hover .paper-read { color: rgba(255,255,255,0.85); }
+            .paper-views { color: rgba(255,255,255,0.25); }
             .paper-type-badge.paper   { background: rgba(26,111,181,0.2); color: #7ab8e8; }
             .paper-type-badge.story   { background: rgba(107,63,160,0.2); color: #b89de0; }
             .paper-type-badge.article { background: rgba(26,122,64,0.2);  color: #7acf9a; }
@@ -355,6 +366,7 @@
 
     <script src="scripts/mammoth.min.js"></script>
     <script>
+        const EYE = `<svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8s3-5 7-5 7 5 7 5-3 5-7 5-7-5-7-5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.5"/></svg>`;
         const ARROW = `<svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3L11 8L6 13M11 8H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
         function formatDate(d) {
@@ -375,7 +387,10 @@
                 ${sub}
                 <p class="paper-excerpt">${item.excerpt}</p>
                 ${tags ? `<div class="paper-tags">${tags}</div>` : ''}
-                <span class="paper-read">${label} ${ARROW}</span>
+                <div class="paper-card-footer">
+                    <span class="paper-read">${label} ${ARROW}</span>
+                    <span class="paper-views" id="views-${item.slug}">${EYE} &nbsp;</span>
+                </div>
             </div>`;
         }
 
@@ -386,7 +401,45 @@
             el.innerHTML = `<div class="papers-empty">${svg}<h3>No ${type}s yet</h3><p>Check back soon.</p></div>`;
         }
 
-        // ── Reader modal ──
+        // ── View counters (counterapi.dev) ──
+        const COUNTER_NS = 'henrix-portfolio'; // unique namespace for your site
+
+        function formatViews(n) {
+            if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+            return n.toString();
+        }
+
+        // Fetch current count (read-only, no increment)
+        async function fetchViewCount(slug) {
+            try {
+                const res = await fetch(`https://counterapi.dev/api/${COUNTER_NS}/${slug}/get`);
+                if (!res.ok) return null;
+                const data = await res.json();
+                return data.count ?? null;
+            } catch { return null; }
+        }
+
+        // Increment count and return new value
+        async function incrementViewCount(slug) {
+            try {
+                const res = await fetch(`https://counterapi.dev/api/${COUNTER_NS}/${slug}/hit`);
+                if (!res.ok) return null;
+                const data = await res.json();
+                return data.count ?? null;
+            } catch { return null; }
+        }
+
+        function updateViewEl(slug, count) {
+            const el = document.getElementById(`views-${slug}`);
+            if (!el) return;
+            if (count === null) { el.style.display = 'none'; return; }
+            el.innerHTML = `${EYE} ${formatViews(count)} view${count === 1 ? '' : 's'}`;
+        }
+
+        // Load all view counts on page render
+        function loadViewCounts(items) {
+            items.forEach(item => fetchViewCount(item.slug).then(c => updateViewEl(item.slug, c)));
+        }
         const overlay   = document.getElementById('reader-overlay');
         const loading   = document.getElementById('reader-loading');
         const content   = document.getElementById('reader-content');
@@ -400,6 +453,8 @@
         const cache = {};
 
         function openReader(item) {
+            // Increment view count and update card
+            incrementViewCount(item.slug).then(c => updateViewEl(item.slug, c));
             // Populate header
             badgeEl.textContent = item.type[0].toUpperCase() + item.type.slice(1);
             badgeEl.className = `paper-type-badge ${item.type}`;
@@ -488,6 +543,9 @@
 
                 if (!papers.length)  renderEmpty(papersGrid,  'paper');
                 if (!stories.length) renderEmpty(storiesGrid, 'story');
+
+                // Load view counts for all cards
+                loadViewCounts(items);
 
                 // Attach click handlers — use event delegation
                 [papersGrid, storiesGrid].forEach(grid => {
